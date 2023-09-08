@@ -8,7 +8,13 @@ export function GenerateToken(registration: string, role: string) {
   });
 }
 
-export function ValidateToken(token: string) {
+export function ValidateToken(token: string): {
+  registration: string;
+  role: "adm" | "operator" | "tecnico";
+} {
   const { jwt_key } = new Enviroments();
-  return jwt.verify(token, jwt_key);
+  return jwt.verify(token, jwt_key) as {
+    registration: string;
+    role: "adm" | "operator" | "tecnico";
+  };
 }

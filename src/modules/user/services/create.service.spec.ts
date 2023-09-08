@@ -14,7 +14,7 @@ describe("CreateUserService", () => {
     createUserService = new CreateUserService(userInMemoryRepository);
   });
 
-  test("should be able to create a new user", async () => {
+  test("Deve ser possível criar um novo usuário", async () => {
     const NewUser: CreateUserRequestDto = {
       name: "John Doe",
       registration: "123456",

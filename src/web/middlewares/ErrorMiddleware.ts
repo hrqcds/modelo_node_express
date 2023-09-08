@@ -35,7 +35,7 @@ export class ErrorMiddleware {
     }
 
     res.status(500).json({
-      message: "Internal Server Error",
+      message: "Erro interno no servidor",
     });
 
     return next();

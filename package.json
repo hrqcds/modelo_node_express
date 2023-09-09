@@ -53,8 +53,9 @@
   "scripts": {
     "test": "vitest src --run",
     "test:dev": "vitest src",
+    "seed": "tsx prisma/seed",
+    "dev": "tsx watch src/main.ts",
     "build": "tsup src",
-    "start": "node dist/main.js",
-    "dev": "tsx watch src/main.ts"
+    "start": "node dist/main.js"
   }
 }

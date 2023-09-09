@@ -16,10 +16,10 @@ export class AuthAdminMiddleware {
 
     const { role } = ValidateToken(bearer);
 
-    if (role !== "adm") {
-      throw new ErrorException("Você não tem permissão para acessar essa rota", 403);
+    if (role === "adm") {
+      return next();
     }
 
-    next();
+    throw new ErrorException("Você não tem permissão para acessar essa rota", 403);
   }
 }

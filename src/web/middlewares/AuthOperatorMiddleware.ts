@@ -17,7 +17,7 @@ export class AuthOperatorMiddleware {
     const { role } = ValidateToken(bearer);
 
     if (role === "operator" || role === "adm") {
-      next();
+      return next();
     }
 
     throw new ErrorException("Você não tem permissão para acessar essa rota", 403);

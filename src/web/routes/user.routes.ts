@@ -6,7 +6,7 @@ const userRouter = Router({
   strict: true,
 });
 
-userRouter.get("/users", ListUserController.handle);
 userRouter.post("/users", CreateUserController.handle);
+userRouter.get("/users", ListUserController.handle);
 
 export { userRouter };

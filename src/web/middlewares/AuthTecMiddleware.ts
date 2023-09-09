@@ -17,11 +17,9 @@ export class AuthTecMiddleware {
     const { role } = ValidateToken(bearer);
 
     if (role === "tecnico" || role === "adm") {
-      next();
+      return next();
     }
 
     throw new ErrorException("Você não tem permissão para acessar essa rota", 403);
-
-    next();
   }
 }

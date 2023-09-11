@@ -2,20 +2,20 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 export async function UserSeed(conn: PrismaClient) {
   try {
-    const password = await bcrypt.hash("admin", 10);
+    const password = await bcrypt.hash("Admin@2023", 10);
     await conn.$connect();
     const adminiExist = await conn.user.findFirst({
       where: {
-        registration: "admin",
+        control: "administrador",
       },
     });
     if (!adminiExist) {
       await conn.user.create({
         data: {
-          name: "admin",
-          registration: "admin",
-          control: "admin",
-          profile: "admin",
+          name: "administrador",
+          registration: "administrador",
+          control: "administrador",
+          profile: "administrador",
           role: "adm",
           password,
         },

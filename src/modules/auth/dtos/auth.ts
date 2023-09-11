@@ -1,8 +1,8 @@
 import { z } from "zod";
 
 export const AuthUserSchema = z.object({
-  registration: z.string().min(1).max(255),
-  password: z.string().min(1).max(255),
+  control: z.string().min(6).max(255),
+  password: z.string().min(10).max(255),
 });
 
 export type AuthRequestUserDto = z.infer<typeof AuthUserSchema>;

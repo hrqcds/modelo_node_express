@@ -18,12 +18,19 @@ export class UserInMemoryRepository implements IUserRepository {
     this.users.push(user);
     return user;
   }
+
   async findByControl(control: string): Promise<User | undefined | null> {
     return this.users.find((u) => u.control === control);
   }
+
   async findByRegistration(registration: string): Promise<User | undefined | null> {
     return this.users.find((u) => u.registration === registration);
   }
+
+  async findById(id: string): Promise<User | undefined | null> {
+    return this.users.find((u) => u.id === id);
+  }
+
   async findAll(query: QueryUserDto): Promise<{
     data: User[];
     total: number;

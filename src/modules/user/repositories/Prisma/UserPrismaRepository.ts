@@ -21,6 +21,12 @@ export class UserPrismaRepository implements IUserRepository {
       where: { registration },
     });
   }
+  async findById(id: string): Promise<User | undefined | null> {
+    return this.conn.user.findUnique({
+      where: { id },
+    });
+  }
+
   async create(data: CreateUserRequestDto): Promise<User> {
     const user = await this.conn.user.create({
       data: {

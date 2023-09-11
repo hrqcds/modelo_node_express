@@ -8,10 +8,8 @@ RUN npm install
 
 COPY . .
 
-RUN npx prisma generate
-
 RUN npm run build
 
 EXPOSE ${SERVER_PORT}
 
-CMD ["npm", "start"]
+CMD ["bin/startup.sh"]

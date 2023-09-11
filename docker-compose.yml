@@ -1,7 +1,35 @@
 version: '3.8'
 
 services:
-  backend:
-    build: .
+  db:
+    container_name: database_5g_localization
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=indt@123
     ports:
-      - 4444:4444
+      - 1433:1433
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.5
+  backend:
+    container_name: backend_5g_localization
+    build: .
+    environment:
+      - DATABASE_URL=sqlserver://10.5.0.5:1433;database=root;username=sa;password=indt@123;trustServerCertificate=true;
+      - SHADOW_DATABASE_URL=sqlserver:/10.5.0.5:1433;database=master;username=sa;password=indt@123;trustServerCertificate=true;
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.6
+    depends_on:
+      - db
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1

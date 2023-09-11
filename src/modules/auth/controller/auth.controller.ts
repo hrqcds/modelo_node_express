@@ -4,12 +4,12 @@ import { AuthService } from "../services/auth.service";
 
 export class AuthController {
   static async handle(req: Request, res: Response): Promise<Response> {
-    const { registration, password } = req.body;
+    const { control, password } = req.body;
 
     const authService = container.resolve(AuthService);
 
     const auth = await authService.execute({
-      registration,
+      control,
       password,
     });
 

@@ -20,7 +20,7 @@ describe("AuthService", () => {
       name: "John Doe",
       registration: "123456",
       control: "123456",
-      password: "123456",
+      password: "Admin@2023",
       profile: "admin",
       role: "adm",
     };
@@ -28,8 +28,8 @@ describe("AuthService", () => {
     await userService.execute(user);
 
     const response = await authService.execute({
-      password: "123456",
-      registration: "123456",
+      password: "Admin@2023",
+      control: "123456",
     });
 
     expect(response).toHaveProperty("token");

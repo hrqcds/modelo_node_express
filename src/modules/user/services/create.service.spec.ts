@@ -17,11 +17,11 @@ describe("CreateUserService", () => {
   test("Deve ser possível criar um novo usuário", async () => {
     const NewUser: CreateUserRequestDto = {
       name: "John Doe",
-      registration: "123456",
-      control: "123456",
+      registration: "1234567890",
+      control: "1234567890",
       profile: "123456",
       role: "adm",
-      password: "123456",
+      password: "Test@indt2023",
     };
 
     const result = await createUserService.execute(NewUser);
@@ -40,7 +40,7 @@ describe("CreateUserService", () => {
       control: "1234567",
       profile: "123456",
       role: "adm",
-      password: "123456",
+      password: "Test@indt2023",
     };
 
     await createUserService.execute(NewUser);
@@ -56,7 +56,7 @@ describe("CreateUserService", () => {
       control: "123456",
       profile: "123456",
       role: "adm",
-      password: "123456",
+      password: "Test@indt2023",
     };
     const NewUser2: CreateUserRequestDto = {
       name: "John Doe",
@@ -64,7 +64,7 @@ describe("CreateUserService", () => {
       control: "123456",
       profile: "123456",
       role: "adm",
-      password: "123456",
+      password: "Test@indt2023",
     };
 
     await createUserService.execute(NewUser);

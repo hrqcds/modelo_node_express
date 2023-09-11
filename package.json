@@ -54,6 +54,7 @@
     "test": "vitest src --run",
     "test:dev": "vitest src",
     "seed": "tsx prisma/seed",
+    "lint": "eslint src --ext .ts",
     "dev": "tsx watch src/main.ts",
     "build": "tsup src",
     "start": "node dist/main.js"

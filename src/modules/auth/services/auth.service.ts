@@ -14,21 +14,21 @@ export class AuthService {
   }
   async execute(data: AuthRequestUserDto): Promise<AuthResponseUserDto> {
     await AuthUserSchema.parseAsync(data);
-    const registrationExist = await this.userRepository.findByRegistration(data.registration);
+    const controlExist = await this.userRepository.findByControl(data.control);
 
-    if (!registrationExist) {
+    if (!controlExist) {
       throw new ErrorException("Usuário não encontrado no sistema", 404);
     }
-    const passwordMatch = await DecryptPassword(data.password, registrationExist.password);
+    const passwordMatch = await DecryptPassword(data.password, controlExist.password);
     if (!passwordMatch) {
       throw new ErrorException("Usuário ou senha incorretos", 401);
     }
 
     return {
-      token: GenerateToken(registrationExist.registration, registrationExist.role),
+      token: GenerateToken(controlExist.registration, controlExist.role),
       user: {
-        name: registrationExist.name,
-        role: registrationExist.role,
+        name: controlExist.name,
+        role: controlExist.role,
       },
     };
   }
